@@ -1,0 +1,1 @@
+- component composition - refactoring to lessen the prop drilling

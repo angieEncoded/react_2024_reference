@@ -1,0 +1,36 @@
+
+003 Starting-Project
+https://github.com/academind/react-complete-guide-code/blob/20-building-mpas-with-react-router-updated/extra-files/01-starting-project.zip
+
+003 CodeSandbox-Starting-Project
+https://codesandbox.io/s/multi-page-spa-react-router-58egl1
+
+008 MainNavigation.module.css
+https://github.com/academind/react-complete-guide-code/blob/20-building-mpas-with-react-router-updated/extra-files/MainNavigation.module.css
+
+016 New-Starting-Project
+https://github.com/academind/react-complete-guide-code/blob/20-building-mpas-with-react-router-updated/extra-files/12-adv-starting-project.zip
+
+019 Events.js
+https://github.com/academind/react-complete-guide-code/blob/20-building-mpas-with-react-router-updated/extra-files/Events.js
+
+028 PageContent.js
+https://github.com/academind/react-complete-guide-code/blob/20-building-mpas-with-react-router-updated/extra-files/PageContent.js
+
+028 PageContent.module.css
+https://github.com/academind/react-complete-guide-code/blob/20-building-mpas-with-react-router-updated/extra-files/PageContent.module.css
+
+038 Updated-MainNavigation.js-File
+https://github.com/academind/react-complete-guide-code/blob/20-building-mpas-with-react-router-updated/extra-files/MainNavigation.js
+
+038 NewsletterSignup.js
+https://github.com/academind/react-complete-guide-code/blob/20-building-mpas-with-react-router-updated/extra-files/NewsletterSignup.js
+
+038 NewsletterSignup.module.css
+https://github.com/academind/react-complete-guide-code/blob/20-building-mpas-with-react-router-updated/extra-files/NewsletterSignup.module.css
+
+038 Newsletter.js
+https://github.com/academind/react-complete-guide-code/blob/20-building-mpas-with-react-router-updated/extra-files/Newsletter.js
+
+038 Updated-App.js-File
+https://github.com/academind/react-complete-guide-code/blob/20-building-mpas-with-react-router-updated/extra-files/App.js
