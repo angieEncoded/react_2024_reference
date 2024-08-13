@@ -7,9 +7,10 @@ import ProductDetail from "./pages/ProductDetail"
 
 const router = createBrowserRouter([
   {path:'/', element: <Layout />, errorElement: <Error />, children: [
-    {path: '/', element:<Home />},
+    //{path: '/', element:<Home />}, // below is alternative to this
+    {index: true, element:<Home />}, // set as index to make this the default path, not required
     {path: '/products', element: <Products /> },
-    {path: '/products/:id', element: <ProductDetail /> },
+    {path: '/products/:id', element: <ProductDetail /> }, // how to add dynmaic ids
   ]}
 ])
 
