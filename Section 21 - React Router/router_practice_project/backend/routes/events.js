@@ -12,7 +12,13 @@ const router = express.Router();
 router.get('/', async (req, res, next) => {
   try {
     const events = await getAll();
-    res.json({ events: events });
+    // simulate a lag
+    setTimeout(() => {
+      res.json({ events: events });
+    }, 1500);
+
+
+ 
   } catch (error) {
     next(error);
   }
