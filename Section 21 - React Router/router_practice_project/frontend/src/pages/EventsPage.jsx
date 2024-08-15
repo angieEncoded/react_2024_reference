@@ -1,6 +1,23 @@
-import { useLoaderData, json } from 'react-router-dom';
+import { useLoaderData, json, defer, Await } from 'react-router-dom';
 import EventsList from '../components/EventsList/EventsList'
+import { Suspense } from 'react';
 
+function EventsPage() {
+  const {events} = useLoaderData();
+  // console.log(events)
+  // How to defer using react-router
+  return (
+    <>
+    <Suspense fallback={<p style={{textAlign: 'center'}}>Loading...</p>}>
+      <Await resolve={events}>
+        {(loadedEvents) => <EventsList events={loadedEvents}/>}
+      </Await>
+    </Suspense>
+    </>
+  );
+}
+
+/*
 function EventsPage() {
   const data = useLoaderData();
   const events = data.events;
@@ -9,18 +26,18 @@ function EventsPage() {
   //   return <p>There was some error - could not fetch events etc</p>
   // }
 
-
   return (
     <>
       <EventsList events={events} />
     </>
   );
 }
+*/
 
 
-// Loader will be called right when we start navigating to the page
-const loader = async () => {
+const loadEvents = async() => {
   const response = await fetch('http://localhost:8080/events');
+
   // console.log(response.ok)
   if (!response.ok) {
     // We could return our own object
@@ -38,10 +55,25 @@ const loader = async () => {
 
     // When an error is thrown in a loader, something special happens
     // react will render the closest error element  
-  } else {
-    return response; // we really only need to return this when using the loader function
-  }
+  } 
 
+  const resData = await response.json();
+  // console.log(resData.events)
+  return resData.events
+  // below will not work with the loader
+  // return response; // we really only need to return this when using the loader function
+
+}
+
+// Loader will be called right when we start navigating to the page
+// We can move the fetch code into another function and use defer to show some elements on
+// the target page while we are fetching
+const loader = () => {
+    return defer({
+      // bundle all the http requests that might be happening
+      events:loadEvents() // must return a promise
+    })
+    
 }
 
 

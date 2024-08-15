@@ -2,11 +2,13 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import HomePage from "./pages/HomePage"
 import Layout from "./pages/Layout"
 import EventsPage, { loader as eventsLoader } from "./pages/EventsPage"
-import NewEventPage, {action as newEventAction} from "./pages/NewEventPage"
+import NewEventPage from "./pages/NewEventPage"
 import EventDetailPage, { loader as eventDetailLoader, action as deleteEventAction } from "./pages/EventDetailPage"
 import EditEventPage from "./pages/EditEventPage"
 import EventsLayout from './pages/EventsLayout'
 import Error from './pages/Error'
+import {action as formSubmissionAction} from "./components/EventForm/EventForm"
+import Newsletter, {action as signupAction} from "./pages/Newsletter"
 
 const router = createBrowserRouter([
   {
@@ -28,13 +30,14 @@ const router = createBrowserRouter([
             loader: eventDetailLoader,
             children: [ // wrap all our routes with the root route and everyone can access the loader
               { index: true, element: <EventDetailPage />, action: deleteEventAction },
-              { path: "edit", element: <EditEventPage /> }
+              { path: "edit", element: <EditEventPage />, action: formSubmissionAction }
             ]
           },
-          { path: "new", element: <NewEventPage />, action: newEventAction },
+          { path: "new", element: <NewEventPage />, action: formSubmissionAction },
 
         ]
-      }
+      },
+      {path: 'newsletter', element: <Newsletter />, action: signupAction},
     ]
   }]
 )

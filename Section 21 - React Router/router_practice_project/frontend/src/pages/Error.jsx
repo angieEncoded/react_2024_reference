@@ -6,12 +6,13 @@ import MainNavigation from '../components/MainNavigation/MainNavigation';
 const Error = () => {
 
   const error = useRouteError();
+  console.log(error)
   // error.status
   // error.message
 
   let title = 'An Error Occured';
   let message = 'Something went wrong';
-  console.log(error.status)
+  // console.log(error.status)
 
   if (error.status === 500 ){
 

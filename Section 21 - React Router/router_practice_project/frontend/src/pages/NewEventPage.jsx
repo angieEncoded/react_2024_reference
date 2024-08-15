@@ -4,7 +4,7 @@ import { redirect } from 'react-router-dom'
 
 const NewEventPage = () => {
   return (
-    <EventForm />
+    <EventForm method={'post'}/>
   )
 }
 
@@ -20,12 +20,18 @@ const action = async ({request, params}) => {
   }
 
   const response = await fetch(`http://localhost:8080/events`, {
-    method: 'POST',
+    method: method,
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(eventData)
   })
+
+
+  if(response.status === 422){
+    return response;
+  }
+
 
   if (!response.ok){
     throw new Response(JSON.stringify({message: "Could not save that event"}), {
