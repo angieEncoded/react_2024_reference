@@ -12,15 +12,18 @@ const redux = require ("redux"); // thiis can NOT be converted to an ES6 module
 // must be a "pure" function. Same inputs always lead to the same output, and no side effects inside the function
 // We want to have a fallback default value for the state
 const counterReducer = (state = {counter : 0}, action) => {
+    // console.log(action.type)
+    // interesting that the initializer sends in this as the sction type
+    //@@redux/INITk.8.2.q.d
 
-    if(action === "ADDONE"){
+    if(action.type === "ADDONE"){
         return {
-            state: state.counter + 1
+            counter: state.counter + 1
         }
     }
-    if(action === "SUBTRACTONE"){
+    if(action.type === "SUBTRACTONE"){
         return {
-            state: state.counter - 1
+            counter: state.counter - 1
         }
     }
 
@@ -38,11 +41,11 @@ const store = redux.createStore(counterReducer);
 // NOTE - we will NOT see this console log until we have dispatched an action
 const counterSubscriber = () => {
     const currentState = store.getState();
-    console.log(`Inside the subscriber: ${currentState.counter}`)
+    console.log(currentState)
 }
 
 // if we wanted to see the initial state, before we have dispatched some action, we could do that here
-console.log(store.getState())
+// console.log(store.getState())
 
 
 // This is how we tell the store that this function wants to subscribe to this store
@@ -50,13 +53,9 @@ store.subscribe(counterSubscriber)
 
 
 // and some actions to do
-store.dispatch({
-    type: "ADDONE"
-})
+store.dispatch({type: "ADDONE"})
 
-store.dispatch({
-    type: "SUBTRACTONE"
-})
+store.dispatch({type: "SUBTRACTONE"})
 
 
 
