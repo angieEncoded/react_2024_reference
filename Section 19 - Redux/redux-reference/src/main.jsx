@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './css/index.css'
 import { Provider } from 'react-redux' // import the provider
-import store from './store/index.js'
+// import store from './store/indexRTK.js' // old initial import
+import store from './store/index.js' // now we will import the master store file
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

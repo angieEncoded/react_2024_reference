@@ -1,58 +1,21 @@
-import { createStore } from 'redux'
-
-const initialState = { counter: 0, showCounter: true }
-
-const counterReducer = (state = initialState, action) => {
-
-    if(action.type === "increase"){
-        return {
-            counter: state.counter + action.amount,
-            showCounter: true
-        }
-    }
-
-    if(action.type === "ADDONE"){
-        return {
-            counter: state.counter + 1,
-            showCounter: true
-        }
-    }
-
-    if (action.type === "SUBTRACTONE"){
-        return {
-            counter: state.counter - 1,
-            showCounter: true
-        }
-    }
-
-    if (action.type === "toggle"){
-        return {
-            counter: state.counter,
-            showCounter: !state.showCounter
-        }
-    }
-
-
-    return state;
-}
+import { configureStore } from "@reduxjs/toolkit";
+import authenticationReducer from "./AuthenticationSlice";
+import counterSliceReducer from "./CounterSlice";
 
 // create the store and point at the reducer function that creates the store
-const store = createStore(counterReducer);
+const store = configureStore({
+    // using a single reducer
+    // reducer: counterSlice.reducer
+
+    // how we can get around having multiple reducers - set an object with our own reducer names
+    reducer: {
+        counterReducer: counterSliceReducer,
+        authenticationReducer: authenticationReducer
+    }
+});
+
+
 
 
 // now we want to connect the rest of the app to this store
 export default store;
-
-
-
-// how we subscribed and used before
-// const counterSubscriber = () => {
-//     const currentState = store.getState();
-//     console.log(currentState)
-// }
-// store.subscribe(counterSubscriber)
-
-
-// dispatch some actions
-// store.dispatch({type: "ADDONE"})
-// store.dispatch({type: "SUBTRACTONE"})
