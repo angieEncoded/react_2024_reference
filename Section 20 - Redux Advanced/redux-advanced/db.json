@@ -12,5 +12,14 @@
       "title": "My second Book",
       "description": "The second book I ever wrote"
     }
+  ],
+  "cart": [
+    {
+      "items": [],
+      "totalQuantity": 0,
+      "totalAmount": 0,
+      "changed": true,
+      "id": "mycart"
+    }
   ]
 }
